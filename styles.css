@@ -244,6 +244,27 @@ a:hover { text-decoration-thickness: 2px; }
   line-height: 1.5;
 }
 
+/* Photo band */
+.band {
+  margin: 0 0 clamp(4rem, 10vw, 7rem);
+  position: relative;
+}
+.band img {
+  display: block;
+  width: 100%;
+  height: clamp(18rem, 55vw, 44rem);
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+.band figcaption {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 1rem;
+  color: var(--lichen);
+  font-size: var(--step--1);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
 /* Balance */
 .balance {
   padding: 0 0 clamp(4rem, 10vw, 7rem);
@@ -333,6 +354,16 @@ a:hover { text-decoration-thickness: 2px; }
   letter-spacing: 0;
 }
 
+.stop-photo, .who-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.stop-photo { margin-top: 1.25rem; }
+.who-photo { max-width: var(--measure); margin: 2rem 0 0; }
 
 /* Who it's for */
 .who { padding: clamp(4rem, 10vw, 7rem) 0; }
@@ -513,7 +544,27 @@ a:hover { text-decoration-thickness: 2px; }
 .book {
   background: var(--lake);
   color: var(--lichen);
-  padding: clamp(4rem, 10vw, 7rem) 0;
+  padding: clamp(5rem, 14vw, 10rem) 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.book-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
+  z-index: -2;
+}
+/* Lake-tinted wash keeps the gorse heading and lichen text readable over the sky */
+.book::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, rgba(23, 50, 47, 0.94) 0%, rgba(23, 50, 47, 0.82) 55%, rgba(23, 50, 47, 0.55) 100%);
 }
 .book-inner { max-width: 48rem; margin: 0 auto; }
 .book h2 {
